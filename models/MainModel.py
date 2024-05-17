@@ -37,6 +37,9 @@ class MainModel:
     def set_solver(self, nuevo_solver):
         self.instancia_minizinc.set_solver(nuevo_solver)
 
+    def set_resultado(self, nuevo_resultado):
+        self.resultado = nuevo_resultado
+
     def get_modelo(self):
         return self.instancia_minizinc.model
 

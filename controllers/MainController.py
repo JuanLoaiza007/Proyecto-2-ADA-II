@@ -28,7 +28,11 @@ class WorkerThread(QThread):
         self.modelo = modelo
 
     def run(self):
-        self.modelo.iniciar()
+        try:
+            self.modelo.iniciar()
+        except Exception as e:
+            self.modelo.set_resultado(None)
+            print_debug("WorkerThread Error -> {}".format(str(e)))
 
 
 class controlador_principal:
@@ -128,12 +132,16 @@ class controlador_principal:
         self.block_focus()
         Temporizador.iniciar(1)
 
-        respuesta = self.modelo.set_datos()
-
-        if (respuesta != None):
-            self.ui.txtE_entrada.setText(
-                "=== Interpretacion ===\n{}".format(str(respuesta["content"])))
-            self.ui.lbl_archivo_cargado.setText(respuesta["filename"])
+        try:
+            respuesta = self.modelo.set_datos()
+            if (respuesta != None):
+                self.ui.txtE_entrada.setText(
+                    "=== Interpretacion ===\n{}".format(str(respuesta["content"])))
+                self.ui.lbl_archivo_cargado.setText(respuesta["filename"])
+        except ValueError:
+            titulo = "Error"
+            mensaje = "Este archivo no es un archivo de datos válido."
+            self.mostrar_dialogo(titulo, mensaje)
 
         self.ui.txtE_resultado.setText("")
         self.unblock_focus()
@@ -150,6 +158,11 @@ class controlador_principal:
         self.modelo.set_solver(nombre_solver)
 
     def mostrar_resultado(self):
+        if (self.modelo.resultado == None):
+            titulo = "Error"
+            mensaje = "Ha ocurrido un error interno y no hay resultado, porfavor contacte a soporte.\nSi usted es soporte, que la fuerza lo acompañe."
+            self.mostrar_dialogo(titulo, mensaje)
+
         self.unblock_focus()
         self.ui.txtE_resultado.setText(self.modelo.resultado)
 
@@ -157,7 +170,7 @@ class controlador_principal:
 
         if self.modelo.get_datos() == None:
             titulo = "Error"
-            mensaje = "Debe cargar datos antes de iniciar el solver"
+            mensaje = "Debe cargar datos antes de iniciar el solver."
             self.mostrar_dialogo(titulo, mensaje)
             return None
 
