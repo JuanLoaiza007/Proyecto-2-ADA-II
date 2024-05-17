@@ -1,4 +1,7 @@
-class Parser:
+import os
+
+
+class PUICAProblemParser:
     @staticmethod
     def parse_input_file_to_dzn(input_file_path):
         """
@@ -34,10 +37,17 @@ class Parser:
             " | ".join([", ".join(map(str, row)) for row in b_ci]) + " |];\n"
 
         dzn_file_path = input_file_path.rsplit('.', 1)[0] + ".dzn"
+
         with open(dzn_file_path, 'w') as dzn_file:
             dzn_file.write(dzn_content)
 
-        return dzn_file_path
+        file_info = {
+            "filename": os.path.basename(input_file_path),
+            "path": dzn_file_path,
+            "content": dzn_content,
+        }
+
+        return file_info
 
     @staticmethod
     def test_parse_input_file_to_dzn():

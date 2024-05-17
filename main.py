@@ -1,18 +1,12 @@
 # [main.py]
 
-from Minizinc import Minizinc
-from tools.File_selector import File_selector
-from QueensProblem.QueensProblemParser import Parser
-
-mzInstance = Minizinc()
-mzInstance.set_model(File_selector.select())
-data = Parser.parse_input_file_to_dzn(File_selector.select())
-mzInstance.set_data(data)
-mzInstance.set_solver("Gecode")
-result = mzInstance.solve()
-print(result)
-
+from controllers.MainController import controlador_principal
+from PyQt5.QtWidgets import QApplication, QMainWindow
+import sys
 
 if __name__ == "__main__":
-    from PUICAProblem.PUICAProblemParser import Parser
-    Parser.test_parse_input_file_to_dzn()
+    app = QApplication(sys.argv)
+    main_window = QMainWindow()
+    controlador_principal = controlador_principal()
+    controlador_principal.mostrar(main_window)
+    sys.exit(app.exec_())

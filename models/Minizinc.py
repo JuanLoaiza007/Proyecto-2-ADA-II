@@ -25,18 +25,33 @@ class Minizinc:
             "OR Tools CP-SAT",
         ]
 
-    def set_model(self, new_model):
-        self.model = str(new_model)
+    def set_model(self, new_model_file):
+        self.model = str(new_model_file)
+        print_debug("El archivo del modelo es {}".format(str(new_model_file)))
 
-    def set_data(self, new_data):
-        self.data = str(new_data)
+    def set_data(self, new_data_file):
+        self.data = str(new_data_file)
+        print_debug("El archivo de datos es {}".format(str(new_data_file)))
 
     def set_solver(self, new_solver):
         if new_solver in self.solver_list:
             self.solver = str(new_solver)
+            print_debug("El solver es {}".format(str(new_solver)))
         else:
             raise Exception(
                 "Error, solver \'{}\' no esta en la lista de solvers usables.".format(str(new_solver)))
+
+    def get_model(self):
+        return self.model
+
+    def get_data(self):
+        return self.data
+
+    def get_model(self):
+        return self.model
+
+    def get_solver_list(self):
+        return self.solver_list
 
     def solve(self):
 
@@ -53,6 +68,8 @@ class Minizinc:
 
         if result.returncode != 0:
             raise Exception(
-                "Error ejecutando el comando de Minizinc:\n {}".format(str(result.stderr)))
+                "Error al ejecutar comando: \'{}\' \n {}".format(str(command), str(result.stderr)))
 
-        return (result.stdout)
+        print_debug("El resultado es {}".format(str(result.stdout)))
+
+        return result.stdout
