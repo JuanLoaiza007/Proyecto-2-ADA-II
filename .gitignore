@@ -4,3 +4,6 @@ venv
 # Caché de python
 __pycache__
 *.pyc
+
+# Minizin
+*.dzn
