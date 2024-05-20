@@ -16,8 +16,8 @@ class Minizinc:
         self.solver = None
 
         self.solver_list = [
-            "Chuffed",
             "COIN-BC",
+            "Chuffed",
             "findMUS",
             "Gecode",
             "Gecode Gist",
