@@ -48,3 +48,9 @@ constraint forall(c_s in 1..n, i_s in 1..m) (
 ); 
 
 
+output [
+    "Utilidad total: ", show(utilidad_total), "\n",
+    "Instalaciones abiertas: ", show(a), "\n",
+    "Productos enviados: ", show(x), "\n",
+];
+
