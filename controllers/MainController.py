@@ -160,7 +160,7 @@ class controlador_principal:
     def mostrar_resultado(self):
         if (self.modelo.resultado == None):
             titulo = "Error"
-            mensaje = "Ha ocurrido un error interno y no hay resultado, porfavor contacte a soporte.\nSi usted es soporte, que la fuerza lo acompañe."
+            mensaje = "Ha ocurrido un error con el solver,\nsi su entrada es correcta porfavor pruebe con otro solver."
             self.mostrar_dialogo(titulo, mensaje)
 
         self.unblock_focus()
