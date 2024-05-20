@@ -20,21 +20,21 @@ class PUICAProblemParser:
             # Número de sitios
             m = int(file.readline().strip())
             # Costos fijos
-            f_i = list(map(float, file.readline().strip().split(',')))
+            f = list(map(float, file.readline().strip().split(',')))
             # Capacidades
-            c_i = list(map(int, file.readline().strip().split(',')))
+            c = list(map(int, file.readline().strip().split(',')))
             # Demandas
-            d_c = list(map(float, file.readline().strip().split(',')))
+            d = list(map(float, file.readline().strip().split(',')))
             # Beneficios
-            b_ci = [list(map(float, file.readline().strip().split(',')))
-                    for _ in range(n)]
+            b = [list(map(float, file.readline().strip().split(',')))
+                 for _ in range(n)]
 
         dzn_content = f"n = {n};\nm = {m};\n"
-        dzn_content += "f_i = [" + ", ".join(map(str, f_i)) + "];\n"
-        dzn_content += "c_i = [" + ", ".join(map(str, c_i)) + "];\n"
-        dzn_content += "d_c = [" + ", ".join(map(str, d_c)) + "];\n"
-        dzn_content += "b_ci = [| " + \
-            " | ".join([", ".join(map(str, row)) for row in b_ci]) + " |];\n"
+        dzn_content += "f = [" + ", ".join(map(str, f)) + "];\n"
+        dzn_content += "c = [" + ", ".join(map(str, c)) + "];\n"
+        dzn_content += "d = [" + ", ".join(map(str, d)) + "];\n"
+        dzn_content += "b = [| " + \
+            " | ".join([", ".join(map(str, row)) for row in b]) + " |];\n"
 
         dzn_file_path = input_file_path.rsplit('.', 1)[0] + ".dzn"
 
