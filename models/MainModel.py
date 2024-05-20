@@ -2,8 +2,8 @@
 
 from models.tools.File_selector import File_selector
 from models.Minizinc import Minizinc
-from tests.QueensProblem.QueensProblemParser import QueensProblemParser as Parser
-from models.PUICAProblem.PUICAProblemParser import PUICAProblemParser
+# from tests.QueensProblem.QueensProblemParser import QueensProblemParser
+from models.PUICAProblem.PUICAProblemParser import PUICAProblemParser as Parser
 
 debug = True
 
@@ -18,7 +18,7 @@ class MainModel:
     def __init__(self):
         self.instancia_minizinc = Minizinc()
         self.resultado = None
-        self.set_modelo("./tests/QueensProblem/nqueens-model.mzn")
+        self.set_modelo("./models/PUICAProblem/PUICA-model.mzn")
 
     def set_modelo(self, nuevo_modelo):
         self.instancia_minizinc.set_model(nuevo_modelo)
