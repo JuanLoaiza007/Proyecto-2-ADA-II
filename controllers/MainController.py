@@ -1,5 +1,6 @@
 # [MainController.py]
 
+import sys
 import os
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QThread
@@ -46,6 +47,9 @@ class controlador_principal:
         self.MainWindow.setMaximumSize(16777215, 16777215)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.MainWindow)
+
+        # Check si minizinc está instalado
+        self.check_minizinc()
 
         # Listeners específicos
         self.ui.btn_cargarArchivo.clicked.connect(self.cargar_archivo)
@@ -121,6 +125,16 @@ class controlador_principal:
         new_dialog.exec()
 
         self.unblock_focus()
+
+    def check_minizinc(self):
+        result = self.modelo.check_minizinc()
+        if (result == "OK"):
+            print_debug("check_minizinc() -> OK")
+        else:
+            print_debug("check_minizinc() -> FAILURE")
+            self.block_focus()
+            self.mostrar_dialogo("Error", result)
+            sys.exit(1)
 
     def cargar_solvers(self):
         lista_solvers = self.modelo.get_lista_solvers()
