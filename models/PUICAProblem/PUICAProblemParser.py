@@ -52,4 +52,4 @@ class PUICAProblemParser:
     @staticmethod
     def test_parse_input_file_to_dzn():
         from tools.File_selector import File_selector
-        return Parser.parse_input_file_to_dzn(File_selector.select())
+        return PUICAProblemParser.parse_input_file_to_dzn(File_selector.select())
