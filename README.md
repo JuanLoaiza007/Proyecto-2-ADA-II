@@ -30,7 +30,7 @@ Este proyecto está organizado en forma de modelo, vista, controlador y cuenta c
 Para que la aplicación funcione correctamente, se requieren lo siguiente:
 
 - Tener instalado Python 3.8 o superior.
-- Tener instalado MiniZinc 2.8.0 o superior (compruebe ejecutando `minizinc -v` en la terminal).
+- Tener instalado MiniZinc 2.8.0 o superior y accesible desde la terminal (compruebe ejecutando `minizinc --version` en la terminal).
 
 ## Instrucciones de Uso
 
