@@ -36,7 +36,7 @@ class WorkerThread(QThread):
             print_debug("WorkerThread Error -> {}".format(str(e)))
 
 
-class controlador_principal:
+class MainController:
     # Funcion para inicializar
     def cargar(self, main_window):
 

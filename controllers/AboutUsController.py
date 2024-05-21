@@ -4,7 +4,7 @@ from views.AboutUsView import Ui_MainWindow
 from models.AboutUsModel import AboutUsModel
 
 
-class controlador_sobre_nosotros:
+class AboutUsController:
     # Funcion para inicializar (general)
     def cargar(self, main_window):
         self.modelo = AboutUsModel()

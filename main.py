@@ -1,12 +1,12 @@
 # [main.py]
 
-from controllers.MainController import controlador_principal
+from controllers.MainController import MainController
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     main_window = QMainWindow()
-    controlador_principal = controlador_principal()
-    controlador_principal.mostrar(main_window)
+    MainController = MainController()
+    MainController.mostrar(main_window)
     sys.exit(app.exec_())
