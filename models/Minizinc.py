@@ -53,6 +53,21 @@ class Minizinc:
     def get_solver_list(self):
         return self.solver_list
 
+    def check_version(self):
+        command = ["minizinc", "--version"]
+
+        try:
+            result = subprocess.run(command, capture_output=True, text=True)
+
+            if result.returncode != 0:
+                raise Exception(
+                    "Error al ejecutar comando: \'{}\' \n {}".format(str(command), str(result.stderr)))
+        except FileNotFoundError:
+            raise Exception(
+                "Error, el programa minizinc no se encuentra en el PATH.")
+
+        return result.stdout
+
     def solve(self):
 
         if (self.model == None):
@@ -73,3 +88,8 @@ class Minizinc:
         print_debug("El resultado es {}".format(str(result.stdout)))
 
         return result.stdout
+
+
+if __name__ == "__main__":
+    minizinc = Minizinc()
+    print(minizinc.check_version())
