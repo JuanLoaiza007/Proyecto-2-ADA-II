@@ -34,6 +34,13 @@ class MainModel:
 
         return parsed
 
+    def check_minizinc(self):
+        try:
+            self.instancia_minizinc.check_version()
+        except Exception as e:
+            return str(e)
+        return "OK"
+
     def set_solver(self, nuevo_solver):
         self.instancia_minizinc.set_solver(nuevo_solver)
 
