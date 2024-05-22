@@ -17,12 +17,12 @@ class Minizinc:
 
         self.solver_list = [
             "COIN-BC",
-            "Chuffed",
-            "findMUS",
-            "Gecode",
+            #"Chuffed",
+            #"findMUS",
+            #"Gecode",
             "Gecode Gist",
-            "Globalizer",
-            "OR Tools CP-SAT",
+            #"Globalizer",
+            #"OR Tools CP-SAT",
         ]
 
     def set_model(self, new_model_file):
