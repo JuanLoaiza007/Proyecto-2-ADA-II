@@ -20,6 +20,6 @@ class AboutUsController:
         self.MainWindow.show()
 
     def volver(self):
-        from controllers.MainController import controlador_principal
-        self.controlador_principal = controlador_principal()
+        from controllers.MainController import MainController
+        self.controlador_principal = MainController()
         self.controlador_principal.mostrar(self.MainWindow)

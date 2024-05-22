@@ -196,6 +196,6 @@ class MainController:
         self.hilo_procesamiento.start()
 
     def mostrar_sobre_nosotros(self):
-        from controllers.AboutUsController import controlador_sobre_nosotros
-        self.controlador_sobre_nosotros = controlador_sobre_nosotros()
+        from controllers.AboutUsController import AboutUsController
+        self.controlador_sobre_nosotros = AboutUsController()
         self.controlador_sobre_nosotros.mostrar(self.MainWindow)
